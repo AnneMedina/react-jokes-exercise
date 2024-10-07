@@ -1,12 +1,14 @@
 import React from "react";
 
-export default function Jokes({ setup, punchline }) {
-
+export default function Jokes(props) {
     return (
         <div className="jokes-container">
-            <h3>Setup: {setup}</h3>
-            <p>Punchline: {punchline}</p>
+            {props.setup && <p>Setup: {props.setup}</p>}
+            <p>Punchline: {props.punchline}</p>
+            {props.upvotes && <p>Upvotes: {props.upvotes}</p>}
+            {props.downvotes && <p>Downvotes: {props.downvotes}</p>}
+            {props.isPun && <p>Is Pun: {props.isPun ? "Not a fan of puns" : ""}</p>}
+            <hr />
         </div>
     )
-
 }

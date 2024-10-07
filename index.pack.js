@@ -399,11 +399,20 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Joke = __webpack_require__(17);
+var _Joke = __webpack_require__(6);
 
 var _Joke2 = _interopRequireDefault(_Joke);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+Challenge: Think critically - how would you pass in a prop that wasn't
+a string datatype.
+
+E.g. Say you want each Joke component to receive an "upvotes" and "downvotes"
+prop that is a number, as well as a prop with an array of comments, and a boolean
+of whether the joke is a pun (`isPun`).
+*/
 
 function App() {
     return _react2.default.createElement(
@@ -411,7 +420,9 @@ function App() {
         null,
         _react2.default.createElement(_Joke2.default, {
             setup: "I got my daughter a fridge for her birthday.",
-            punchline: "I can't wait to see her face light up when she opens it."
+            punchline: "I can't wait to see her face light up when she opens it.",
+            upvotes: 5,
+            isPun: false
         }),
         _react2.default.createElement(_Joke2.default, {
             setup: "How did the hacker escape the police?",
@@ -423,12 +434,15 @@ function App() {
         }),
         _react2.default.createElement(_Joke2.default, {
             setup: "Why do bees stay in the hive in the winter?",
-            punchline: "Swarm"
+            punchline: "Swarm",
+            isPun: true,
+            downvotes: 10
         }),
         _react2.default.createElement(_Joke2.default, {
             setup: "What's the best thing about Switzerland?",
             punchline: "I don't know, but the flag is a big plus!"
-        })
+        }),
+        _react2.default.createElement(_Joke2.default, { punchline: "It\u2019s hard to explain puns to kleptomaniacs because \nthey always take things literally." })
     );
 }
 
@@ -479,7 +493,62 @@ if (process.env.NODE_ENV === 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */,
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Jokes;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Jokes(props) {
+    return _react2.default.createElement(
+        "div",
+        { className: "jokes-container" },
+        props.setup && _react2.default.createElement(
+            "p",
+            null,
+            "Setup: ",
+            props.setup
+        ),
+        _react2.default.createElement(
+            "p",
+            null,
+            "Punchline: ",
+            props.punchline
+        ),
+        props.upvotes && _react2.default.createElement(
+            "p",
+            null,
+            "Upvotes: ",
+            props.upvotes
+        ),
+        props.downvotes && _react2.default.createElement(
+            "p",
+            null,
+            "Downvotes: ",
+            props.downvotes
+        ),
+        props.isPun && _react2.default.createElement(
+            "p",
+            null,
+            "Is Pun: ",
+            props.isPun ? "Not a fan of puns" : ""
+        ),
+        _react2.default.createElement("hr", null)
+    );
+}
+
+/***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30536,46 +30605,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = Jokes;
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Jokes(_ref) {
-    var setup = _ref.setup,
-        punchline = _ref.punchline;
-
-    return _react2.default.createElement(
-        "div",
-        { className: "jokes-container" },
-        _react2.default.createElement(
-            "h3",
-            null,
-            "Setup: ",
-            setup
-        ),
-        _react2.default.createElement(
-            "p",
-            null,
-            "Punchline: ",
-            punchline
-        )
-    );
-}
 
 /***/ })
 /******/ ]);
